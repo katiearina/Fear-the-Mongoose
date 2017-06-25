@@ -15,6 +15,7 @@ mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
+var PORT = process.env.PORT || 8080;
 
 // Use morgan (for logging) and body parser
 app.use(logger("dev"));
@@ -44,3 +45,9 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them
 // *TO DO*
 // INSERT ROUTES HERE! (Make sure they are exported).
+
+
+// Listen on port 8080
+app.listen(PORT, function() {
+  console.log("Jumping in to the Shark Tank on PORT " + PORT + "!");
+});
