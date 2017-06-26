@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var expresshandlebars = require("express-handlebars");
+var path = require("path");
 
 // Scraping
 var request = require("request");
