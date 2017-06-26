@@ -6,6 +6,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var expresshandlebars = require("express-handlebars");
 var path = require("path");
+// =============================================================
 
 // Scraping
 var request = require("request");
@@ -46,9 +47,11 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them
 // *TO DO*
 // INSERT ROUTES HERE! (Make sure they are exported).
+// require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
-
-// Listen on port 8080
+// =============================================================
+// Starts the server listening
 app.listen(PORT, function() {
   console.log("Jumping in to the Shark Tank on PORT " + PORT + "!");
 });
