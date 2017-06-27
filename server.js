@@ -1,4 +1,3 @@
-
 // Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
@@ -37,8 +36,18 @@ var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.
 // Switch to URI connection before deploying.
 // mongoose.connect(mongodbURI);
 mongoose.connect("mongodb://localhost/fearthemongoosedb");
-
 var db = mongoose.connection;
+
+// Show any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful!");
+});
+
 
 // Declare Handlebars path for layout
 app.engine("handlebars", expresshandlebars({ defaultLayout: "main" }));
@@ -47,7 +56,7 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them
 // *TO DO*
 // INSERT ROUTES HERE! (Make sure they are exported).
-// require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
 // =============================================================
