@@ -7,7 +7,7 @@ html, body {
 
 #gradient {
   min-height: 100%;
-  background: red; /* For browsers that do not support gradients */
+  background: #A1BFB0; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#D4E1DB, #A1BFB0, #556F65); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#D4E1DB, #A1BFB0, #556F65); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#D4E1DB, #A1BFB0, #556F65); /* For Firefox 3.6 to 15 */
@@ -18,8 +18,9 @@ html, body {
   /*font-family: 'Finger Paint', cursive;*/
   /*font-family: 'Raleway Dots', cursive;*/
   text-align: center;
-  background-color: #EEEEEC;
-  border-bottom: #349565 5px solid;
+  background-color: #192A30;
+  color: #E2E1DF;
+  border-bottom: #349565 3px solid;
 }
 
 h1 {
@@ -29,17 +30,19 @@ h1 {
 
 h2 {
   font-family: 'Megrim', cursive;
+  color: #d6d4d2;
 }
 
 h3 {
   text-align: center;
 }
 
-a, a:active, a:visited, a:hover {
+a, a:active, a:visited {
   text-decoration: none;
-  color: #223941;
+  color: #E2E1DF;
 }
 
 a:hover {
-  color: #192A30;
+  text-decoration: none;
+  color: #3C6573;
 }
