@@ -8,10 +8,10 @@ html, body {
 #gradient {
   min-height: 100%;
   background: #A1BFB0; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#D4E1DB, #A1BFB0, #556F65); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#D4E1DB, #A1BFB0, #556F65); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#D4E1DB, #A1BFB0, #556F65); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#b2e0d0,#7BCAAF, #349565); /* Standard syntax */
+  background: -webkit-linear-gradient(#B2E0D0,#7BCAAF, #349565); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#B2E0D0,#7BCAAF, #349565); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#B2E0D0,#7BCAAF, #349565); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#B2E0D0,#7BCAAF, #349565); /* Standard syntax */
 }
 
 .jumbotron {
@@ -30,7 +30,7 @@ h1 {
 
 h2 {
   font-family: 'Megrim', cursive;
-  color: #d6d4d2;
+  color: #D6D4D2;
 }
 
 h3 {
