@@ -29,11 +29,14 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // MongoDB URI string
-var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.mlab.com:39242/heroku_t1vmzwp0"
+  // *TO DO*
+  // Try using process.env instead of actual link.
+// var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.mlab.com:39242/heroku_t1vmzwp0";
+var mongodbURI = process.env.MONGODB_URI;
 
 // Database configuration with mongoose
-// *TO DO*
-// Switch to URI connection before deploying.
+  // *TO DO*
+  // Switch to URI connection before deploying.
 // mongoose.connect(mongodbURI);
 mongoose.connect("mongodb://localhost/fearthemongoosedb");
 var db = mongoose.connection;
@@ -54,8 +57,8 @@ app.engine("handlebars", expresshandlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them
-// *TO DO*
-// INSERT ROUTES HERE! (Make sure they are exported).
+  // *TO DO*
+  // INSERT ROUTES HERE! (Make sure they are exported).
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
