@@ -11,6 +11,10 @@ var path = require("path");
 var request = require("request");
 var cheerio = require("cheerio");
 
+// Require Article and Comment models
+var Article = require("./models/Article.js");
+var Comment = require("./models/Comment.js");
+
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 

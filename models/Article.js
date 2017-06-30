@@ -15,6 +15,10 @@ var ArticleSchema = new Schema({
         required: true,
         unique: true
     },
+    scrapedDate: {
+        type: Date,
+        default: Date.now
+    },
     comment: {
       type: Schema.Types.ObjectId,
       ref: "Comment"
