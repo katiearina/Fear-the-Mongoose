@@ -28,8 +28,7 @@ module.exports = function (app) {
         // Add the text and href of every link, and save them as properties of the result object
           result.title = $(element).children().text();
           result.link = $(element).children().attr("href");
-          console.log(result);
-          
+
           // Create a new entry using the Article model
           var article = new Article(result);
 
