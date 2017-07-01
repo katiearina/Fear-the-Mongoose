@@ -19,6 +19,10 @@ var ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    saved: {
+        type: Boolean,
+        default: false
+    },
     comment: {
       type: Schema.Types.ObjectId,
       ref: "Comment"

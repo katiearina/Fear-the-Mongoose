@@ -5,7 +5,7 @@ var Comment = require("../models/Comment.js");
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-        Article.find({}, null, {sort: '-scrapedDate'}, function(error, doc) {
+        Article.find({}, function(error, doc) {
             if (error) {
                 res.send(error);
             }

@@ -1,7 +1,13 @@
 <h3>Current Articles</h3>
 
   {{#each articles}}
-  <p>
-    {{this.title}}
-  </p>
+    <div class="card w-50">
+    <div class="card-block">
+      <a href="{{this.link}}" target="_blank">
+        <h4 class="card-title">{{this.title}}</h4>
+      </a>
+      <p class="card-text">Comment!</p>
+      <p class="card-text">Save!</p>
+    </div>
+    </div>
   {{/each}}
