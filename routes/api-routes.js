@@ -88,7 +88,7 @@ module.exports = function (app) {
     });
   });
 
-// Add comment to article
+  // Add comment to article
   app.post("/articles/:id", function (req, res) {
     var newComment = new Comment(req.body);
     // And save the new comment to the db
@@ -109,6 +109,29 @@ module.exports = function (app) {
             res.send(doc);
           }
         });
+      }
+    });
+  });
+
+  app.post("/saved/:id", function (req, res) {
+    Article.findOneAndUpdate({"_id": req.params.id}, {"saved": true})
+      .exec(function(error, doc) {
+          if (error) {
+              console.log(error);
+          } 
+          else {
+              res.send(doc);
+          }
+      });
+  });
+
+  app.delete("/delete/:id", function (req, res) {
+    Comment.remove({"_id": req.params.id}, function (error, doc) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        console.log(req.params.id + " removed from database!");
       }
     });
   });
