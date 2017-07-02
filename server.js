@@ -32,28 +32,43 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Path for static content
 app.use(express.static(path.join(__dirname, "public")));
 
-// MongoDB URI string
-  // *TO DO*
-  // Try using process.env instead of actual link.
-var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.mlab.com:39242/heroku_t1vmzwp0";
-// var mongodbURI = process.env.MONGODB_URI;
+
+// var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.mlab.com:39242/heroku_t1vmzwp0";
+  var localDB = "mongodb://localhost/fearthemongoosedb";
+  var db = mongoose.connection;
+
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+  mongoose.connect(localDB);
+  // Show any mongoose errors
+  db.on("error", function(error) {
+    console.log("Mongoose Error: ", error);
+  });
+
+  // Once logged in to the db through mongoose, log a success message
+  db.once("open", function() {
+    console.log("Mongoose connection successful!");
+  });
+ }
 
 // Database configuration with mongoose
   // *TO DO*
   // Switch to URI connection before deploying.
-mongoose.connect(mongodbURI);
+// mongoose.connect(mongodbURI);
 // mongoose.connect("mongodb://localhost/fearthemongoosedb");
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
 // Show any mongoose errors
-db.on("error", function(error) {
-  console.log("Mongoose Error: ", error);
-});
+// db.on("error", function(error) {
+//   console.log("Mongoose Error: ", error);
+// });
 
 // Once logged in to the db through mongoose, log a success message
-db.once("open", function() {
-  console.log("Mongoose connection successful!");
-});
+// db.once("open", function() {
+//   console.log("Mongoose connection successful!");
+// });
 
 
 // Declare Handlebars path for layout
