@@ -40,7 +40,7 @@ module.exports = function (app) {
             }
 
             else {
-              // console.log(doc);
+              console.log(doc);
             }
           });
 
