@@ -40,7 +40,7 @@ module.exports = function (app) {
             }
 
             else {
-              console.log(doc);
+              // console.log(doc);
             }
           });
 
@@ -50,11 +50,67 @@ module.exports = function (app) {
 
     // Redirect to home page once scrape is complete
     console.log("Total number scraped: " + totalArticles);
-    res.render("index", result);
 
     });
   
+  // Tell the browser that we finished scraping the text
+  console.log("Scrape Complete");
+  res.redirect("/");
     
+  });
+
+  // app.get("/articles", function(req, res) {
+  //   Article.find({}, function(error, doc) {
+  //     if (error) {
+  //       console.log(error);
+  //     }
+  //     else {
+  //       res.render("index", {"articles": doc});
+  //     }
+  //   });
+  // });
+
+  // Grab an article by its ObjectId
+  app.get("/articles/:id", function (req, res) {
+    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db
+    Article.findOne({ "_id": req.params.id })
+    // ..and populate all of the comments associated with it
+    .populate("comment")
+    // now, execute our query
+    .exec(function(error, doc) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        // Otherwise, send the doc to the browser as a json object
+        res.json(doc);
+      }
+    });
+  });
+
+// Add comment to article
+  app.post("/articles/:id", function (req, res) {
+    var newComment = new Comment(req.body);
+    // And save the new comment the db
+    newComment.save(function(error, doc) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        // Use the article id to find and update its note
+        Article.findOneAndUpdate({ "_id": req.params.id}, { "comment": doc._id })
+        // Execute the above query
+        .exec(function(error, doc) {
+          if (error) {
+            console.log(error)
+          }
+          else {
+            // Send the document to the browser
+            res.send(doc);
+          }
+        });
+      }
+    });
   });
 
 };
