@@ -35,8 +35,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // MongoDB URI string
   // *TO DO*
   // Try using process.env instead of actual link.
-// var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.mlab.com:39242/heroku_t1vmzwp0";
-var mongodbURI = process.env.MONGODB_URI;
+var mongodbURI = "mongodb://heroku_t1vmzwp0:e3ru7ge9a69mssc3h8frn3kvdp@ds139242.mlab.com:39242/heroku_t1vmzwp0";
+// var mongodbURI = process.env.MONGODB_URI;
 
 // Database configuration with mongoose
   // *TO DO*
