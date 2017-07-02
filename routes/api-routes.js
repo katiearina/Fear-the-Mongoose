@@ -91,14 +91,14 @@ module.exports = function (app) {
 // Add comment to article
   app.post("/articles/:id", function (req, res) {
     var newComment = new Comment(req.body);
-    // And save the new comment the db
+    // And save the new comment to the db
     newComment.save(function(error, doc) {
       if (error) {
         console.log(error);
       }
       else {
         // Use the article id to find and update its note
-        Article.findOneAndUpdate({ "_id": req.params.id}, { "comment": doc._id })
+        Article.findOneAndUpdate({"_id": req.params.id}, { $push: {"comment": doc._id} })
         // Execute the above query
         .exec(function(error, doc) {
           if (error) {

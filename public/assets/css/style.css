@@ -94,3 +94,8 @@ a:hover {
 .card a:hover {
   color: #349565;
 }
+
+#titleinput, #authorinput, #bodyinput {
+  width: 100%;
+  margin-bottom: 5px;
+}

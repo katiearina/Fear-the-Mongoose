@@ -22,21 +22,22 @@ $(document).on("click", ".commentArticle", function() {
 	  console.log(data);
     // $(".modal-body").empty();
     $(".modal-title").html("<h5>Comments on: " + data.title + "</h5>");
-    $(".modal-body").html("<input id='titleinput' name='title' >");
-    $(".modal-body").append("<input id='authorinput' name='author' >");
-    $(".modal-body").append("<textarea id='bodyinput' name='body'></textarea>");
+    $(".modal-body").html("<input id='titleinput' name='title' placeholder='Comment Title'>");
+    $(".modal-body").append("<input id='authorinput' name='author' placeholder='Comment Author'>");
+    $(".modal-body").append("<textarea id='bodyinput' name='body' placeholder='Comment Body'></textarea>");
     $(".modal-body").append("<button data-id='" + data._id + "' id='saveComment'>Save Comment</button>");
 
     if (data.comment) {
-      $("#titleinput").val(data.comment.title);
-      $("#authorinput").val(data.comment.author);
-      $("#bodyinput").val(data.comment.body);
+    $(".modal-body").append("<div class='modal-footer' id=" + data._id + ">");
+    for (i = 0; i < data.comment.length; i++) {
+    $(".modal-footer").append("<p>" + data.comment[i].title + "</p>");
+    }
     }
   });
 
 });
 
-// When you click the savenote button
+// When you click the saveComment button
 $(document).on("click", "#saveComment", function() {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
@@ -51,14 +52,14 @@ $(document).on("click", "#saveComment", function() {
       title: $("#titleinput").val(),
       // Value taken from author input
       author: $("#authorinput").val(),
-      // Value taken from note textarea
+      // Value taken from comment body textarea
       body: $("#bodyinput").val()
     }
   })
     // With that done
     .done(function(data) {
       // Log the response
-      console.log("Posted! " + data);
+      console.log("Posted!", data);
       // Empty the notes section
       $(".modal-body").empty();
     });
