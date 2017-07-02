@@ -55,13 +55,10 @@ a:hover {
   color: #3C6573;
 }
 
-button {
+.btn {
   margin-left: 25px;
   margin-right: 25px;
   margin-bottom: 20px;
-}
-
-.btn {
   font-size: 13px;
   background-color: #3C6573;
   color: #E2E1DF;

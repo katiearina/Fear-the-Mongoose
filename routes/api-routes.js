@@ -17,13 +17,15 @@ module.exports = function (app) {
       // Load the HTML into cheerio and save it to a variable
       var $ = cheerio.load(html);
 
+        // Save an empty result object
+        var result = {};
+
+        var totalArticles;
+
       // Select each instance of the HTML body that you want to scrape
       // NOTE: Cheerio selectors function similarly to jQuery's selectors, 
       // but be sure to visit the package's npm page to see how it works
       $('h2').each(function(i, element){
-
-        // Save an empty result object
-        var result = {};
 
         // Add the text and href of every link, and save them as properties of the result object
           result.title = $(element).children().text();
@@ -38,16 +40,21 @@ module.exports = function (app) {
             }
 
             else {
-              console.log(doc);
-            }    
+              // console.log(doc);
+            }
           });
 
+          totalArticles = i;
+
       });
-    });
 
     // Redirect to home page once scrape is complete
-    res.redirect("/");
+    console.log("Total number scraped: " + totalArticles);
+    res.render("index", result);
 
+    });
+  
+    
   });
 
 };
