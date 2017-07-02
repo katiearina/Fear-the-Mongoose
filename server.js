@@ -41,8 +41,8 @@ var mongodbURI = process.env.MONGODB_URI;
 // Database configuration with mongoose
   // *TO DO*
   // Switch to URI connection before deploying.
-// mongoose.connect(mongodbURI);
-mongoose.connect("mongodb://localhost/fearthemongoosedb");
+mongoose.connect(mongodbURI);
+// mongoose.connect("mongodb://localhost/fearthemongoosedb");
 var db = mongoose.connection;
 
 // Show any mongoose errors
